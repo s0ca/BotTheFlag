@@ -30,7 +30,6 @@ auth.set_access_token(ACCESS_KEY,ACCESS_SECRET)
 api=tweepy.API(auth)
 config = configparser.ConfigParser()
 config.read("config.ini")
-print(config["GENERAL"])
 client = tweepy.Client(bearer_token=BEARER_TOKEN,
                            consumer_key=CONSUMER_KEY,
                            consumer_secret=CONSUMER_SECRET,
