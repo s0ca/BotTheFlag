@@ -3,11 +3,8 @@ from http import client
 from pydoc import cli
 from re import T
 from xml.etree.ElementTree import tostring
-from datetime import datetime 
 import configparser
-import numpy as np
 import tweepy
-import requests
 import time
 import flag
 import operator
