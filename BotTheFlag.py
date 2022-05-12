@@ -2,19 +2,13 @@ from functools import total_ordering
 from http import client
 from pydoc import cli
 from re import T
-from unittest import TextTestResult
 from xml.etree.ElementTree import tostring
 from datetime import datetime 
 import configparser
 import numpy as np
-import pandas
-import requests
 import tweepy
 import requests
-import json
-import schedule
 import time
-import logging
 import flag
 import operator
 
@@ -229,4 +223,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-       
