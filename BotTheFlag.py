@@ -79,7 +79,7 @@ def get_likers_flags(api,tweet_id) :
             if paginator==0:
                 users=client.get_liking_users(id=tweet_id)
             else:
-                users=client.get_liking_users(id=tweet_id,pagination_token=paginator,user_fields=['description'])
+                users=client.get_liking_users(id=tweet_id,pagination_token=paginator,user_fields='description')
             paginator=users[3]['next_token']
             total_users=total_users+users[0]
             
@@ -179,8 +179,8 @@ def main():
                 flags,nbr_flags,nbr_likes,too_many=get_likers_flags(api,reply_ids[i])
                 text=""
                 if nbr_likes>0:
-                    if flags==False:
-                        text="Aucun drapeau "
+                    if not flags:
+                        response="Aucun drapeau dans "+str(nbr_likes)+" noms ayant likés"
                     else:  
                         for j in range(len(flags)):
                            text=text+flags[j]+" :"+ str(nbr_flags[j])+","
@@ -192,6 +192,7 @@ def main():
                     print(text)
                     try:
                         api.update_status(status=response,in_reply_to_status_id=mentions_id[i],auto_populate_reply_metadata=True)
+                        client.like(mentions_id[i])
                     except:
                         print("tweet error")
                         api.update_status(status="Api trop sollicité par les restrictions Twitter, essayez plus tard",in_reply_to_status_id=mentions_id[i],auto_populate_reply_metadata=True)
@@ -219,4 +220,4 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    main()       
