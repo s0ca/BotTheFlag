@@ -54,7 +54,7 @@ def get_mention_id(api,since_id):
         if mentions[i].in_reply_to_status_id is not None:
             if mentions[i].in_reply_to_user_id != 1514239229295050754:
                 print(mentions[i])
-                if "analyse ce tweet" in mentions[i].text:
+                if "analyse ce tweet" in mentions[i].text or "analyses ce tweet" in mentions[i].text:
                     reply_ids.append(mentions[i].in_reply_to_status_id)
                     usernames.append(mentions[i].user.screen_name)
                     mentions_id.append(mentions[i].id)
@@ -75,7 +75,7 @@ def get_likers_flags(api,tweet_id) :
     total_users=[]
     too_many=0
     try:
-        while paginator!=paginator1 and len(total_users)<3000:
+        while paginator!=paginator1 and len(total_users)<2700:
             if paginator==0:
                 users=client.get_liking_users(id=tweet_id)
             else:
@@ -185,7 +185,7 @@ def main():
                         for j in range(len(flags)):
                            text=text+flags[j]+" :"+ str(nbr_flags[j])+","
                         text=text[:-1]  
-                        response="Nbr drapeaux dans "+str(nbr_likes)+" noms ayant likés:\n"+text
+                        response="Nbr de drapeaux dans "+str(nbr_likes)+" noms ayant likés:\n"+text
                         if len(response)>=280:
                             response=response[:279]
                         
@@ -220,4 +220,4 @@ def main():
     
 
 if __name__ == "__main__":
-    main()       
+    main()
