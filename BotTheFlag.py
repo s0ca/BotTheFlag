@@ -52,16 +52,15 @@ def get_mention_id(api,since_id):
     text=[]
     for i in range(len(mentions)):
         if mentions[i].in_reply_to_status_id is not None:
-            if mentions[i].in_reply_to_user_id != 1514239229295050754:
-                print(mentions[i])
-                if "analyse ce tweet" in mentions[i].text or "analyses ce tweet" in mentions[i].text:
-                    reply_ids.append(mentions[i].in_reply_to_status_id)
-                    usernames.append(mentions[i].user.screen_name)
-                    mentions_id.append(mentions[i].id)
-                else:
-                    not_analyse.append(mentions[i].id)
-                    since_id=max(not_analyse)+1
-                    print(since_id)
+            print(mentions[i])
+            if "analyse ce tweet" in mentions[i].text or "analyses ce tweet" in mentions[i].text:
+                reply_ids.append(mentions[i].in_reply_to_status_id)
+                usernames.append(mentions[i].user.screen_name)
+                mentions_id.append(mentions[i].id)
+            else:
+                not_analyse.append(mentions[i].id)
+                since_id=max(not_analyse)+1
+                print(since_id)
             
     if len(mentions)>0:
         if mentions_id:
