@@ -123,6 +123,11 @@ def get_likers_flags(api,tweet_id) :
                                         a[j+2]='R'
                                         print("".join(a[j:j+4]))
                                         print(flag.flagize("".join(a[j:j+4])))
+                                    if a[j+1]=='U' and a[j+2]=='M':
+                                        a[j+1]='U'
+                                        a[j+2]='S'
+                                        print("".join(a[j:j+4]))
+                                        print(flag.flagize("".join(a[j:j+4])))
                                     if is_flag_emoji(flag.flagize("".join(a[j:j+4]))):
                                         flags.append(flag.flagize("".join(a[j:j+4])))
                             except:
